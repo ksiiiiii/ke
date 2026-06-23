@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3д модель</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="viewer-page">
+
+    <header class="viewer-header">
+        <a href="index.html" class="btn btn-back">← Назад к списку</a>
+        <h2>Интерактивный просмотр</h2>
+    </header>
+
+    <main class="viewer-container">
+        <model-viewer id="viewer" 
+                      camera-controls 
+                      auto-rotate 
+                      shadow-intensity="1" 
+                      alt="3D Модель">
+        </model-viewer>
+
+        <a id="downloadBtn" href="#" download class="btn btn-download-large">Скачать эту модель</a>
+    </main>
+
+    <script>
+        const params = new URLSearchParams(window.location.search);
+        const id = params.get('id');
+        
+        const models = {
+            '1': { src: 'models/table.glb', name: 'Стол' },
+            '2': { src: 'models/chair.glb', name: 'Стул' },
+            '3': { src: 'models/robot.glb', name: 'Робот КП11' }
+        };
+
+        const modelData = models[id] || models['1'];
+        
+        const viewer = document.getElementById('viewer');
+        viewer.src = modelData.src;
+        viewer.alt = modelData.name;
+        
+        const downloadBtn = document.getElementById('downloadBtn');
+        downloadBtn.href = modelData.src;
+        
+        document.title = `Просмотр: ${modelData.name}`;
+    </script>
+</body>
+</html>
