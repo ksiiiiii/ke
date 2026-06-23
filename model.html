@@ -1,11 +1,13 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>3д модель</title>
+    <title>Просмотр 3д модели</title>
     <link rel="stylesheet" href="css/style.css">
+    
+    <!-- библиотека model-viewer от Google -->
+    <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.5.0/model-viewer.min.js"></script>
 </head>
 <body class="viewer-page">
 
@@ -32,7 +34,7 @@
         const models = {
             '1': { src: 'models/table.glb', name: 'Стол' },
             '2': { src: 'models/chair.glb', name: 'Стул' },
-            '3': { src: 'models/robot.glb', name: 'Робот КП11' }
+            '3': { src: 'models/robot.glb', name: 'Робот КП №11' }
         };
 
         const modelData = models[id] || models['1'];
@@ -46,5 +48,6 @@
         
         document.title = `Просмотр: ${modelData.name}`;
     </script>
+
 </body>
 </html>
